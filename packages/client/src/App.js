@@ -1,4 +1,4 @@
-//import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
@@ -27,21 +27,20 @@ class App extends Component {
     };
     this.socket = null;
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
     this.socket = new WebSocket('ws://localhost:3000/');
-    this.socket.addEventListener('message', (e)=>{
+    this.socket.addEventListener('messages', (e) => {
       this.addMessages(JSON.parse(e.data));
     });
   }
 
-  
-  addMessages = (message) => {
-    console.log(message);
+  addMessages = (messages) => {
+    console.log(messages);
     this.setState({
-      message: [...this.state.message, ...message],
+      message: [...this.state.messages, ...messages],
     });
-  }
+  };
 
   sendMessage = () => {
     socket.send(this.state.messageValue);
@@ -53,9 +52,11 @@ class App extends Component {
   render() {
     return (
       <>
-      <ul>
-        {this.state.messages.map((m, i)=>(<li key={i}>{m}</li>))}
-      </ul>
+        <ul>
+          {this.state.messages.map((m, i) => (
+            <li key={i}>{m}</li>
+          ))}
+        </ul>
         <input
           type="textarea"
           value={this.state.messageValue}
