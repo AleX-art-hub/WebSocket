@@ -25,6 +25,22 @@ class App extends Component {
       messages: [],
       messageValue: '',
     };
+    this.socket = null;
+  }
+
+  componentDidMount(){
+    const socket = new WebSocket('ws://localhost:3000/');
+    this.socket.addEventListener('message', (e)=>{
+      this.addMessages(JSON.parse(e.data));
+    });
+  }
+
+  
+  addMessages = (message) => {
+    console.log(massage);
+    this.setState({
+      message: [...this.state.message, ...message],
+    });
   }
 
   sendMessage = () => {
@@ -37,6 +53,9 @@ class App extends Component {
   render() {
     return (
       <>
+      <ul>
+        {this.state.messages.map((m, i)=>(<li key={i}>{m}</li>))}
+      </ul>
         <input
           type="textarea"
           value={this.state.messageValue}
