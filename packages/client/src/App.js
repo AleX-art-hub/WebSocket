@@ -30,7 +30,7 @@ class App extends Component {
 
   componentDidMount() {
     this.socket = new WebSocket('ws://localhost:3000/');
-    this.socket.addEventListener('messages', (e) => {
+    this.socket.addEventListener('message', (e) => {
       this.addMessages(JSON.parse(e.data));
     });
   }
@@ -38,7 +38,7 @@ class App extends Component {
   addMessages = (messages) => {
     console.log(messages);
     this.setState({
-      message: [...this.state.messages, ...messages],
+      messages: [...this.state.messages, ...messages],
     });
   };
 
