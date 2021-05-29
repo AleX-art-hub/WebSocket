@@ -27,9 +27,9 @@ class App extends Component {
     };
     this.socket = null;
   }
-
+  
   componentDidMount(){
-    const socket = new WebSocket('ws://localhost:3000/');
+    this.socket = new WebSocket('ws://localhost:3000/');
     this.socket.addEventListener('message', (e)=>{
       this.addMessages(JSON.parse(e.data));
     });
@@ -37,7 +37,7 @@ class App extends Component {
 
   
   addMessages = (message) => {
-    console.log(massage);
+    console.log(message);
     this.setState({
       message: [...this.state.message, ...message],
     });
