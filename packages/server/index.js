@@ -1,7 +1,6 @@
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-const connectionHandler = require('./ws');
 var cors = require('cors');
 const app = express();
 app.use(cors());
