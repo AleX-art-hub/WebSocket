@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.roomContainer {
+  display: flex;
+  justify-content: space-between;
+  min-width: 80vw;
+}
+
+.msgList {
+  flex: 1;
+  color: #350303;
+  min-height: 50vh;
+  background-color: white;
+  margin: 0 20px;
+}
