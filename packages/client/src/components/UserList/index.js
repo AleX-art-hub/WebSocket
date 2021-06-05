@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const UsersList = ({ users, currentUser, onSelect }) => {

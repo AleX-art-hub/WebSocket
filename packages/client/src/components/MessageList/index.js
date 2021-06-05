@@ -15,8 +15,7 @@ function MessagesList(props) {
   return (
     <ul>
       {messages ? (
-        messages.map((msg, index)
-         => <MessageItem key={index} {...msg} />)
+        messages.map((msg, index) => <MessageItem key={index} {...msg} />)
       ) : (
         <li>Select your chat</li>
       )}
